@@ -42,7 +42,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.16.1",
-  "appid": "wxbf012ffd4c9e28e3",
+  "appid": "your_appid_here",
   "projectname": "restaurant-miniprogram",
   "condition": {},
   "editorSetting": {
