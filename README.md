@@ -81,6 +81,7 @@ db_restaurant_payment
 | `REDIS_PASSWORD` | Redis 密码 | `your_redis_password` |
 | `NACOS_PASSWORD` | Nacos 密码 | `your_nacos_password` |
 | `RABBITMQ_PASSWORD` | RabbitMQ 密码 | `your_rabbitmq_password` |
+| `WECHAT_APP_ID` | 微信小程序 AppID | `your_app_id` |
 | `WECHAT_APP_SECRET` | 微信小程序 AppSecret | `your_app_secret` |
 | `MINIO_ACCESS_KEY` | MinIO Access Key | `your_minio_access_key` |
 | `MINIO_SECRET_KEY` | MinIO Secret Key | `your_minio_secret_key` |
