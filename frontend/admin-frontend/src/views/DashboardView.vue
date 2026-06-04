@@ -86,6 +86,7 @@ const recentOrders = ref<any[]>([])
 
 const stats = reactive({
   todayOrderCount: 0,
+  yesterdayOrderCount: 0,
   todayRevenue: '0.00',
   pendingOrders: 0,
   todayNewUsers: 0
@@ -105,9 +106,18 @@ const timeGreeting = computed(() => {
   return '晚上好'
 })
 
+const orderCompareText = computed(() => {
+  const t = stats.todayOrderCount
+  const y = stats.yesterdayOrderCount
+  if (y === 0) return t > 0 ? '昨日无订单' : '暂无数据'
+  const pct = Math.round((t - y) / y * 100)
+  const sign = pct >= 0 ? '+' : ''
+  return `较昨日 ${sign}${pct}%`
+})
+
 const statCards = computed(() => [
   {
-    label: '今日订单', value: stats.todayOrderCount, sub: '较昨日 +12%',
+    label: '今日订单', value: stats.todayOrderCount, sub: orderCompareText.value,
     icon: 'Tickets', gradient: 'linear-gradient(135deg, #667eea, #764ba2)',
   },
   {

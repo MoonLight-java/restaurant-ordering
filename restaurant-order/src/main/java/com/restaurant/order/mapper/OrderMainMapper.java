@@ -27,4 +27,10 @@ public interface OrderMainMapper extends BaseMapper<OrderMain> {
      */
     @Select("SELECT COUNT(*) FROM order_main WHERE status IN (0, 1, 2) AND is_deleted = 0")
     int countPendingOrders();
+
+    /**
+     * 统计昨日订单数
+     */
+    @Select("SELECT COUNT(*) FROM order_main WHERE DATE(create_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND is_deleted = 0")
+    int countYesterdayOrders();
 }

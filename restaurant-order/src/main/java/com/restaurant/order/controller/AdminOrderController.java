@@ -64,11 +64,13 @@ public class AdminOrderController {
     public Result<Map<String, Object>> dashboardStatistics() {
         log.info("Query dashboard statistics");
         int todayOrderCount = orderMainMapper.countTodayOrders();
+        int yesterdayOrderCount = orderMainMapper.countYesterdayOrders();
         BigDecimal todayRevenue = orderMainMapper.sumTodayRevenue();
         int pendingOrders = orderMainMapper.countPendingOrders();
 
         Map<String, Object> result = new HashMap<>();
         result.put("todayOrderCount", todayOrderCount);
+        result.put("yesterdayOrderCount", yesterdayOrderCount);
         result.put("todayRevenue", todayRevenue);
         result.put("pendingOrders", pendingOrders);
         return Result.ok(result);
