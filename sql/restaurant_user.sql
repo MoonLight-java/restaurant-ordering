@@ -1,0 +1,34 @@
+CREATE DATABASE IF NOT EXISTS db_restaurant_user DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE db_restaurant_user;
+
+CREATE TABLE user_profile (
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL COMMENT '关联auth_user.id',
+    nickname VARCHAR(64) DEFAULT '' COMMENT '昵称',
+    avatar VARCHAR(512) DEFAULT '' COMMENT '头像URL',
+    phone VARCHAR(20) DEFAULT NULL COMMENT '手机号',
+    gender TINYINT DEFAULT 0 COMMENT '性别: 0=未知, 1=男, 2=女',
+    birthday DATE DEFAULT NULL COMMENT '生日',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_deleted TINYINT NOT NULL DEFAULT 0,
+    UNIQUE KEY uk_user_id (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户资料表';
+
+CREATE TABLE user_address (
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL COMMENT '用户ID',
+    contact_name VARCHAR(32) NOT NULL COMMENT '联系人姓名',
+    contact_phone VARCHAR(20) NOT NULL COMMENT '联系电话',
+    province VARCHAR(32) DEFAULT '' COMMENT '省',
+    city VARCHAR(32) DEFAULT '' COMMENT '市',
+    district VARCHAR(32) DEFAULT '' COMMENT '区',
+    detail_address VARCHAR(255) NOT NULL COMMENT '详细地址',
+    latitude DECIMAL(10,7) DEFAULT NULL COMMENT '纬度',
+    longitude DECIMAL(10,7) DEFAULT NULL COMMENT '经度',
+    is_default TINYINT NOT NULL DEFAULT 0 COMMENT '是否默认: 0=否, 1=是',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_deleted TINYINT NOT NULL DEFAULT 0,
+    INDEX idx_user_id (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户地址表';

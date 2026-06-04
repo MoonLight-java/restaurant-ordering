@@ -1,0 +1,36 @@
+<view class="page">
+  <view wx:if="{{addresses.length === 0}}" class="empty-state">
+    <view class="empty-icon-wrap">
+      <text class="empty-icon-text">📍</text>
+    </view>
+    <text class="empty-title">还没有收货地址</text>
+    <text class="empty-desc">添加一个地址方便配送</text>
+  </view>
+
+  <view class="address-list">
+    <view class="address-card" wx:for="{{addresses}}" wx:key="id"
+          bindtap="selectAddress" data-address="{{item}}">
+      <view class="card-header">
+        <view class="card-contact">
+          <text class="contact-name">{{item.contactName}}</text>
+          <text class="contact-phone">{{item.contactPhone}}</text>
+        </view>
+        <view class="default-tag" wx:if="{{item.isDefault === 1}}">
+          <text>默认</text>
+        </view>
+      </view>
+      <text class="card-addr">{{item.province}}{{item.city}}{{item.district}} {{item.detailAddress}}</text>
+      <view class="card-footer">
+        <text class="action-link edit" bindtap="editAddress" data-id="{{item.id}}">编辑</text>
+        <text class="action-link delete" bindtap="deleteAddress" data-id="{{item.id}}">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-btn-wrap">
+    <view class="add-btn" bindtap="addAddress">
+      <text class="add-icon">+</text>
+      <text>添加新地址</text>
+    </view>
+  </view>
+</view>

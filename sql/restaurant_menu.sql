@@ -1,0 +1,58 @@
+CREATE DATABASE IF NOT EXISTS db_restaurant_menu DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE db_restaurant_menu;
+
+CREATE TABLE menu_category (
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    name VARCHAR(32) NOT NULL COMMENT '分类名称',
+    type TINYINT NOT NULL DEFAULT 0 COMMENT '类型: 0=热菜, 1=套餐, 2=饮品',
+    sort_order INT NOT NULL DEFAULT 0 COMMENT '排序',
+    status TINYINT NOT NULL DEFAULT 1 COMMENT '状态: 0=隐藏, 1=显示',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_deleted TINYINT NOT NULL DEFAULT 0,
+    INDEX idx_sort (sort_order)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='菜品分类表';
+
+CREATE TABLE menu_dish (
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    category_id BIGINT UNSIGNED NOT NULL COMMENT '分类ID',
+    name VARCHAR(128) NOT NULL COMMENT '菜品名称',
+    description VARCHAR(1024) DEFAULT '' COMMENT '描述',
+    image VARCHAR(512) DEFAULT '' COMMENT '主图URL',
+    price DECIMAL(10,2) NOT NULL DEFAULT 0.00 COMMENT '基础价格',
+    status TINYINT NOT NULL DEFAULT 1 COMMENT '状态: 0=下架, 1=上架',
+    sales_count INT NOT NULL DEFAULT 0 COMMENT '累计销量',
+    sort_order INT NOT NULL DEFAULT 0 COMMENT '排序',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_deleted TINYINT NOT NULL DEFAULT 0,
+    INDEX idx_category (category_id),
+    INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='菜品表';
+
+CREATE TABLE menu_dish_spec_group (
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    dish_id BIGINT UNSIGNED NOT NULL COMMENT '菜品ID',
+    name VARCHAR(32) NOT NULL COMMENT '规格组名称(如: 辣度, 份量)',
+    select_type TINYINT NOT NULL DEFAULT 0 COMMENT '选择类型: 0=单选, 1=多选',
+    is_required TINYINT NOT NULL DEFAULT 1 COMMENT '是否必选: 0=否, 1=是',
+    sort_order INT NOT NULL DEFAULT 0,
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_deleted TINYINT NOT NULL DEFAULT 0,
+    INDEX idx_dish (dish_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='菜品规格组表';
+
+CREATE TABLE menu_dish_spec_item (
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    group_id BIGINT UNSIGNED NOT NULL COMMENT '规格组ID',
+    dish_id BIGINT UNSIGNED NOT NULL COMMENT '菜品ID(冗余)',
+    name VARCHAR(64) NOT NULL COMMENT '规格项名称(如: 微辣, 大份)',
+    price_adjust DECIMAL(10,2) NOT NULL DEFAULT 0.00 COMMENT '价格调整',
+    sort_order INT NOT NULL DEFAULT 0,
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_deleted TINYINT NOT NULL DEFAULT 0,
+    INDEX idx_group (group_id),
+    INDEX idx_dish (dish_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='菜品规格项表';

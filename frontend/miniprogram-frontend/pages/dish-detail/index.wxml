@@ -1,0 +1,70 @@
+<view class="page">
+  <!-- Hero Image -->
+  <view class="hero-wrap">
+    <image class="hero-image" src="{{dish.image || '/images/default-dish.png'}}" mode="aspectFill" />
+    <view class="hero-overlay"></view>
+    <view class="hero-info">
+      <text class="hero-name">{{dish.name}}</text>
+      <text class="hero-price">¥{{dish.price}}</text>
+    </view>
+  </view>
+
+  <!-- Description -->
+  <view class="info-card" wx:if="{{dish.description}}">
+    <view class="info-label">
+      <text class="label-icon">📝</text>
+      <text>菜品介绍</text>
+    </view>
+    <text class="info-desc">{{dish.description}}</text>
+  </view>
+
+  <!-- Spec Groups -->
+  <view class="spec-card" wx:if="{{dish.specGroups && dish.specGroups.length > 0}}">
+    <view class="info-label">
+      <text class="label-icon">⚙️</text>
+      <text>规格选择</text>
+    </view>
+    <view class="spec-group" wx:for="{{dish.specGroups}}" wx:key="id" wx:for-item="group">
+      <view class="spec-group-title">{{group.name}}</view>
+      <view class="spec-items">
+        <view
+          class="spec-item {{group.selectType === 0 ? (selectedSpecs[group.id] === item.id ? 'active' : '') : (selectedSpecs[group.id] && selectedSpecs[group.id].indexOf(item.id) > -1 ? 'active' : '')}}"
+          wx:for="{{group.items}}" wx:key="id" wx:for-item="item"
+          data-group-id="{{group.id}}"
+          data-item-id="{{item.id}}"
+          data-select-type="{{group.selectType}}"
+          data-price-adjust="{{item.priceAdjust || 0}}"
+          bindtap="onSpecSelect"
+        >
+          <text class="spec-item-name">{{item.name}}</text>
+          <text class="spec-item-price" wx:if="{{item.priceAdjust}}">
+            {{item.priceAdjust > 0 ? '+' + item.priceAdjust : item.priceAdjust}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bottom spacer -->
+  <view class="bottom-spacer"></view>
+
+  <!-- Bottom Bar -->
+  <view class="bottom-bar">
+    <view class="quantity-control">
+      <view class="qty-btn {{quantity <= 1 ? 'disabled' : ''}}" bindtap="decreaseQty">
+        <text class="qty-icon">−</text>
+      </view>
+      <text class="qty-num">{{quantity}}</text>
+      <view class="qty-btn" bindtap="increaseQty">
+        <text class="qty-icon">+</text>
+      </view>
+    </view>
+    <view class="price-area">
+      <text class="total-label">合计</text>
+      <text class="total-price">¥{{totalPrice}}</text>
+    </view>
+    <view class="add-cart-btn" bindtap="addToCart">
+      <text>加入购物车</text>
+    </view>
+  </view>
+</view>

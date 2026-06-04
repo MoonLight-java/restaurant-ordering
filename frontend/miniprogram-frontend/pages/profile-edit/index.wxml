@@ -1,0 +1,45 @@
+<view class="page">
+  <!-- Avatar -->
+  <view class="avatar-section">
+    <view class="avatar-wrap" bindtap="changeAvatar">
+      <image class="avatar" src="{{avatar || '/images/default-avatar.png'}}" mode="aspectFill" />
+      <view class="avatar-overlay">
+        <text class="camera-icon">📷</text>
+      </view>
+    </view>
+    <text class="avatar-hint">点击更换头像</text>
+  </view>
+
+  <!-- Form -->
+  <view class="form-card">
+    <view class="form-item">
+      <text class="form-label">昵称</text>
+      <input class="form-input" placeholder="请输入昵称" value="{{nickname}}" bindinput="onNicknameInput" maxlength="20" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">手机号</text>
+      <input class="form-input" placeholder="请输入手机号" value="{{phone}}" bindinput="onPhoneInput" maxlength="11" type="number" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">性别</text>
+      <view class="gender-group">
+        <view class="gender-option {{gender === 0 ? 'active' : ''}}" bindtap="selectGender" data-gender="0">
+          <text>男</text>
+        </view>
+        <view class="gender-option {{gender === 1 ? 'active' : ''}}" bindtap="selectGender" data-gender="1">
+          <text>女</text>
+        </view>
+        <view class="gender-option {{gender === 2 ? 'active' : ''}}" bindtap="selectGender" data-gender="2">
+          <text>保密</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Save -->
+  <view class="btn-section">
+    <view class="save-btn" bindtap="saveProfile">
+      <text>保存</text>
+    </view>
+  </view>
+</view>

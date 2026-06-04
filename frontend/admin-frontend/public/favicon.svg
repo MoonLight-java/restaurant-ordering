@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="48" y2="48">
+      <stop stop-color="#E67E22"/>
+      <stop offset="1" stop-color="#e74c3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#g)"/>
+  <!-- bowl -->
+  <path d="M10 22c0-2 1.5-4 3.5-5l8-2.5c1.5-.5 3-.5 4.5 0l8 2.5c2 1 3.5 3 3.5 5v10c0 2.5-2 4.5-4.5 4.5H14.5c-2.5 0-4.5-2-4.5-4.5V22z" fill="white" opacity="0.95"/>
+  <!-- plate/egg inner -->
+  <ellipse cx="24" cy="27" rx="8" ry="4.5" fill="url(#g)"/>
+  <!-- highlight -->
+  <ellipse cx="22" cy="26" rx="3" ry="1.5" fill="white" opacity="0.35"/>
+</svg>

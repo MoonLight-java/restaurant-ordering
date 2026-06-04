@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/dish-detail/index",
+    "pages/cart/index",
+    "pages/order-confirm/index",
+    "pages/order-list/index",
+    "pages/order-detail/index",
+    "pages/profile/index",
+    "pages/address-list/index",
+    "pages/address-edit/index",
+    "pages/profile-edit/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1E272E",
+    "navigationBarTitleText": "Sunset Bistro",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F0F2F5"
+  },
+  "tabBar": {
+    "color": "#B2BEC3",
+    "selectedColor": "#FF6B35",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/order-list/index",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: restaurant-menu
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.200.101:8848
+        namespace: public
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD}
+      config:
+        server-addr: 192.168.200.101:8848
+        namespace: public
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD}
+        file-extension: yaml
+        group: DEFAULT_GROUP

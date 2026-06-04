@@ -1,0 +1,75 @@
+<view class="page">
+  <!-- Empty Cart -->
+  <view class="empty-state" wx:if="{{!items || items.length === 0}}">
+    <view class="empty-icon-wrap">
+      <text class="empty-icon-text">🛒</text>
+    </view>
+    <text class="empty-title">购物车还是空的</text>
+    <text class="empty-desc">快去挑选喜欢的美食吧</text>
+    <view class="btn-primary" bindtap="goOrder">去点餐</view>
+  </view>
+
+  <!-- Cart List -->
+  <view class="cart-content" wx:else>
+    <view class="cart-header">
+      <text class="cart-title">我的购物车</text>
+      <text class="cart-count-text">{{items.length}}件商品</text>
+    </view>
+
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{items}}" wx:key="id">
+        <!-- Checkbox -->
+        <view class="checkbox-wrap" bindtap="toggleSelect" data-id="{{item.id}}">
+          <view class="check-circle {{selectedIds.indexOf(item.id) > -1 ? 'checked' : ''}}">
+            <text class="check-mark" wx:if="{{selectedIds.indexOf(item.id) > -1}}">✓</text>
+          </view>
+        </view>
+
+        <!-- Image -->
+        <image class="item-image" src="{{item.dishImage || '/images/default-dish.png'}}" mode="aspectFill" />
+
+        <!-- Info -->
+        <view class="item-info">
+          <text class="item-name">{{item.dishName}}</text>
+          <text class="item-specs" wx:if="{{item.specJson && item.specJson !== '[]'}}">{{item.specJson}}</text>
+          <view class="item-bottom">
+            <text class="item-price">¥{{item.unitPrice}}</text>
+            <view class="qty-stepper">
+              <view class="stepper-btn {{item.quantity <= 1 ? 'disabled' : ''}}"
+                    data-id="{{item.id}}" data-qty="{{item.quantity - 1}}" bindtap="quantityChange">
+                <text>−</text>
+              </view>
+              <text class="stepper-num">{{item.quantity}}</text>
+              <view class="stepper-btn"
+                    data-id="{{item.id}}" data-qty="{{item.quantity + 1}}" bindtap="quantityChange">
+                <text>+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- Delete -->
+        <view class="delete-swipe" bindtap="deleteItem" data-id="{{item.id}}">
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Bottom Bar -->
+    <view class="bottom-bar">
+      <view class="select-all" bindtap="toggleSelectAll">
+        <view class="check-circle {{selectAll ? 'checked' : ''}}">
+          <text class="check-mark" wx:if="{{selectAll}}">✓</text>
+        </view>
+        <text class="select-all-text">全选</text>
+      </view>
+      <view class="summary">
+        <text class="summary-label">合计</text>
+        <text class="summary-price">¥{{totalPrice}}</text>
+      </view>
+      <view class="checkout-btn {{selectedIds.length === 0 ? 'disabled' : ''}}" bindtap="goCheckout">
+        <text>去结算</text>
+      </view>
+    </view>
+  </view>
+</view>

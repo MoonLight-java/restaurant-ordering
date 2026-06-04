@@ -1,0 +1,353 @@
+/* ============================================
+   Index Page — Sunset Bistro Menu
+   ============================================ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding-bottom: 140rpx;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(160deg, #1E272E 0%, #2D3436 60%, #3D2C2E 100%);
+  padding: 20rpx 28rpx 28rpx;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.header-greeting {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.greeting-emoji {
+  font-size: 40rpx;
+}
+
+.greeting-text {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1rpx;
+}
+
+.brand-icon {
+  font-size: 40rpx;
+}
+
+.brand-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1rpx;
+}
+
+.header-subtitle {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2rpx;
+}
+
+/* Category bar */
+.category-bar {
+  white-space: nowrap;
+  background: #fff;
+  padding: 20rpx 16rpx;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.category-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 20rpx;
+  margin: 0 6rpx;
+  border-radius: var(--radius-md);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 100rpx;
+}
+
+.cat-icon-wrap {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #F5F6FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rpx;
+  transition: all 0.25s ease;
+}
+
+.cat-icon {
+  font-size: 28rpx;
+}
+
+.category-item.active .cat-icon-wrap {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 53, 0.3);
+}
+
+.cat-name {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.category-item.active .cat-name {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Dishes header */
+.dishes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 24rpx 24rpx 8rpx;
+}
+
+.dishes-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5rpx;
+}
+
+.dishes-count {
+  font-size: 24rpx;
+  color: var(--text-tertiary);
+}
+
+/* Dish grid */
+.dish-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8rpx 16rpx;
+  gap: 16rpx;
+}
+
+.dish-card {
+  width: calc(50% - 8rpx);
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dish-card:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-md);
+}
+
+.card-image-wrap {
+  width: 100%;
+  height: 200rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+}
+
+.card-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.15));
+}
+
+.card-tag {
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+  background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 600;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  letter-spacing: 0.5rpx;
+}
+
+.card-body {
+  padding: 16rpx 16rpx 20rpx;
+}
+
+.card-name {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  margin-bottom: 6rpx;
+}
+
+.card-desc {
+  font-size: 22rpx;
+  color: var(--text-tertiary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  margin-bottom: 14rpx;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card-price {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-symbol {
+  font-size: 22rpx;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.price-value {
+  font-size: 34rpx;
+  color: var(--primary);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.card-sales {
+  font-size: 20rpx;
+  color: var(--text-tertiary);
+}
+
+/* Add button */
+.add-btn {
+  position: absolute;
+  right: 12rpx;
+  bottom: 16rpx;
+  width: 52rpx;
+  height: 52rpx;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 53, 0.35);
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.add-btn:active {
+  transform: scale(0.9);
+  box-shadow: 0 2rpx 8rpx rgba(255, 107, 53, 0.3);
+}
+
+.add-icon {
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: 300;
+  line-height: 1;
+  margin-top: -2rpx;
+}
+
+/* Cart float */
+.cart-float {
+  position: fixed;
+  bottom: 120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  animation: floatUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(40rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.cart-float-inner {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  background: linear-gradient(135deg, #1E272E, #2D3436);
+  color: #fff;
+  border-radius: var(--radius-full);
+  padding: 16rpx 36rpx;
+  box-shadow: 0 12rpx 40rpx rgba(30, 39, 46, 0.4);
+}
+
+.cart-icon-wrap {
+  position: relative;
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-emoji {
+  font-size: 32rpx;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4rpx;
+  right: -8rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  background: var(--primary);
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #2D3436;
+}
+
+.cart-float-text {
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+
+.cart-float-arrow {
+  font-size: 32rpx;
+  font-weight: 300;
+  opacity: 0.7;
+}

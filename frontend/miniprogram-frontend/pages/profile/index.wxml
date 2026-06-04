@@ -1,0 +1,67 @@
+<view class="page">
+  <!-- User header -->
+  <view class="profile-hero">
+    <view class="hero-bg-pattern"></view>
+    <view class="hero-content" bindtap="goEditProfile">
+      <view class="avatar-wrap">
+        <image class="avatar" src="{{user.avatar || '/images/default-avatar.png'}}" mode="aspectFill" />
+        <view class="avatar-ring"></view>
+      </view>
+      <text class="nickname">{{user.nickname || '点击登录'}}</text>
+      <text class="phone-hint" wx:if="{{user.phone}}">{{user.phone}}</text>
+      <view class="edit-badge">
+        <text>编辑资料 ›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Stats -->
+  <view class="stats-row">
+    <view class="stat-item" bindtap="goOrders" data-status="0">
+      <text class="stat-num pending">{{orderCounts.pending || 0}}</text>
+      <text class="stat-label">待支付</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="goOrders" data-status="2">
+      <text class="stat-num preparing">{{orderCounts.confirmed || 0}}</text>
+      <text class="stat-label">进行中</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="goOrders" data-status="3">
+      <text class="stat-num completed">{{orderCounts.completed || 0}}</text>
+      <text class="stat-label">已完成</text>
+    </view>
+  </view>
+
+  <!-- Menu -->
+  <view class="menu-card">
+    <view class="menu-item" bindtap="goOrders">
+      <view class="menu-icon-wrap orders">
+        <text class="menu-emoji">📋</text>
+      </view>
+      <text class="menu-label">我的订单</text>
+      <view class="menu-right">
+        <view class="menu-badge" wx:if="{{orderCounts.pending > 0}}">{{orderCounts.pending}}</view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+    <view class="menu-item" bindtap="goAddress">
+      <view class="menu-icon-wrap address">
+        <text class="menu-emoji">📍</text>
+      </view>
+      <text class="menu-label">收货地址</text>
+      <view class="menu-right">
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+    <view class="menu-item" bindtap="goAbout">
+      <view class="menu-icon-wrap about">
+        <text class="menu-emoji">ℹ️</text>
+      </view>
+      <text class="menu-label">关于我们</text>
+      <view class="menu-right">
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>

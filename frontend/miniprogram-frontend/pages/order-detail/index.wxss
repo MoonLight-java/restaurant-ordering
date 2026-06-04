@@ -1,0 +1,318 @@
+/* ============================================
+   Order Detail — Sunset Bistro
+   ============================================ */
+
+.page {
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding-bottom: 160rpx;
+}
+
+/* Status hero */
+.status-hero {
+  position: relative;
+  padding: 56rpx 32rpx;
+  overflow: hidden;
+}
+
+.status-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(circle, #fff 2rpx, transparent 2rpx);
+  background-size: 32rpx 32rpx;
+}
+
+.status-0 { background: linear-gradient(160deg, #E17055, #D63031); }
+.status-1 { background: linear-gradient(160deg, #00B894, #00A381); }
+.status-2 { background: linear-gradient(160deg, #6C5CE7, #5A4BD1); }
+.status-3 { background: linear-gradient(160deg, #636E72, #4A5256); }
+.status-4 { background: linear-gradient(160deg, #B2BEC3, #8D9A9E); }
+
+.status-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.status-icon-circle {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  backdrop-filter: blur(10rpx);
+  margin-bottom: 16rpx;
+  border: 2rpx solid rgba(255,255,255,0.15);
+}
+
+.status-title {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+.status-hint {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Section card */
+.section-card {
+  background: #fff;
+  margin: 16rpx 20rpx;
+  border-radius: var(--radius-md);
+  padding: 24rpx;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 16rpx;
+  padding-bottom: 14rpx;
+  border-bottom: 1rpx solid #F5F6FA;
+}
+
+.section-dot {
+  font-size: 28rpx;
+}
+
+.section-label {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Address */
+.addr-line1 {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 8rpx;
+}
+
+.addr-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.addr-phone {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.addr-line2 {
+  font-size: 26rpx;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+/* Info grid */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14rpx 0;
+}
+
+.info-row:not(:last-child) {
+  border-bottom: 1rpx solid #FAFBFC;
+}
+
+.info-key {
+  font-size: 26rpx;
+  color: var(--text-tertiary);
+}
+
+.info-val {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.info-val.mono {
+  font-family: monospace;
+  font-size: 24rpx;
+}
+
+.info-val.remark {
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 360rpx;
+  text-align: right;
+}
+
+.status-color-0 { color: #E17055 !important; font-weight: 600; }
+.status-color-1 { color: #00B894 !important; font-weight: 600; }
+.status-color-2 { color: #6C5CE7 !important; font-weight: 600; }
+.status-color-3 { color: #636E72 !important; font-weight: 600; }
+.status-color-4 { color: #B2BEC3 !important; font-weight: 600; }
+
+/* Dishes */
+.dish-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.dish-item:not(:last-child) {
+  border-bottom: 1rpx solid #FAFBFC;
+}
+
+.dish-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: var(--radius-sm);
+  background: #F5F6FA;
+}
+
+.dish-info {
+  flex: 1;
+  padding: 0 16rpx;
+  overflow: hidden;
+}
+
+.dish-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.dish-spec {
+  font-size: 22rpx;
+  color: var(--text-tertiary);
+  margin-top: 2rpx;
+}
+
+.dish-meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.dish-price {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+}
+
+.dish-qty {
+  font-size: 22rpx;
+  color: var(--text-tertiary);
+  display: block;
+  margin-top: 2rpx;
+}
+
+/* Price list */
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+}
+
+.pr-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.pr-value {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.pr-value.discount {
+  color: var(--accent-green);
+}
+
+.total-row {
+  border-top: 1rpx solid #EEE;
+  padding-top: 16rpx;
+  margin-top: 8rpx;
+}
+
+.pr-total-label {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pr-total-value {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Bottom actions */
+.actions-spacer {
+  height: 140rpx;
+}
+
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16rpx;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.06);
+  z-index: 100;
+}
+
+.action-btn {
+  font-size: 28rpx;
+  font-weight: 600;
+  padding: 18rpx 40rpx;
+  border-radius: var(--radius-full);
+  transition: all 0.15s ease;
+  letter-spacing: 0.5rpx;
+}
+
+.action-btn:active {
+  transform: scale(0.96);
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  box-shadow: 0 6rpx 24rpx rgba(255, 107, 53, 0.3);
+}
+
+.action-btn.outline {
+  background: #fff;
+  color: var(--text-secondary);
+  border: 1rpx solid #DFE6E9;
+}
+
+.action-btn.full {
+  width: 100%;
+  text-align: center;
+}
+
+.loading-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 28rpx;
+  color: var(--text-tertiary);
+}

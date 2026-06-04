@@ -1,0 +1,76 @@
+<view class="page">
+  <!-- Header -->
+  <view class="header">
+    <view class="header-top">
+      <view class="header-greeting">
+        <text class="greeting-emoji">👋</text>
+        <text class="greeting-text">今天想吃点什么？</text>
+      </view>
+      <view class="header-actions">
+        <text class="header-subtitle">发现美味</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Categories -->
+  <scroll-view class="category-bar" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="category-item {{activeCategoryId === item.id ? 'active' : ''}}"
+          wx:for="{{categories}}" wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="switchCategory">
+      <view class="cat-icon-wrap">
+        <text class="cat-icon">{{item.icon || '🍴'}}</text>
+      </view>
+      <text class="cat-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- Section Title -->
+  <view class="dishes-header">
+    <text class="dishes-title">精选菜品</text>
+    <text class="dishes-count">{{dishes.length}}款美味</text>
+  </view>
+
+  <!-- Dish Grid -->
+  <view class="dish-grid">
+    <view class="dish-card" wx:for="{{dishes}}" wx:key="id" bindtap="showDishDetail" data-dish="{{item}}">
+      <view class="card-image-wrap">
+        <image class="card-image" src="{{item.image || '/images/default-dish.png'}}" mode="aspectFill" lazy-load />
+        <view class="card-image-overlay"></view>
+        <view class="card-tag" wx:if="{{item.salesCount > 100}}">
+          <text>🔥 热卖</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <text class="card-name">{{item.name}}</text>
+        <text class="card-desc">{{item.description || '精心烹制，美味可口'}}</text>
+        <view class="card-footer">
+          <view class="card-price">
+            <text class="price-symbol">¥</text>
+            <text class="price-value">{{item.price}}</text>
+          </view>
+          <view class="card-sales" wx:if="{{item.salesCount}}">
+            <text>月售{{item.salesCount}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="add-btn" catchtap="addToCart" data-dish="{{item}}">
+        <text class="add-icon">+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Cart Float -->
+  <view class="cart-float" bindtap="goCart" wx:if="{{cartCount > 0}}">
+    <view class="cart-float-inner">
+      <view class="cart-icon-wrap">
+        <text class="cart-emoji">🛒</text>
+        <view class="cart-badge">{{cartCount}}</view>
+      </view>
+      <text class="cart-float-text">去结算</text>
+      <view class="cart-float-arrow">
+        <text>›</text>
+      </view>
+    </view>
+  </view>
+</view>

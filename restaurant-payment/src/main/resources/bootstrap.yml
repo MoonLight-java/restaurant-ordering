@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: restaurant-payment
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.200.101:8848
+        namespace: ${NACOS_NAMESPACE:}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD}
+      config:
+        server-addr: 192.168.200.101:8848
+        namespace: ${NACOS_NAMESPACE:}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD}
+        file-extension: yaml
+        shared-configs:
+          - data-id: common-config.yaml
+            group: DEFAULT_GROUP
+            refresh: true

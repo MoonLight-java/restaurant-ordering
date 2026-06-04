@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+      - com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: 6379
+    password: ${REDIS_PASSWORD}
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: restaurant-auth
+          uri: lb://restaurant-auth
+          predicates:
+            - Path=/api/auth/**
+        - id: restaurant-auth-admin
+          uri: lb://restaurant-auth
+          predicates:
+            - Path=/api/admin/auth/**
+        - id: restaurant-user
+          uri: lb://restaurant-user
+          predicates:
+            - Path=/api/user/**
+        - id: restaurant-auth-users
+          uri: lb://restaurant-auth
+          predicates:
+            - Path=/api/admin/users/**
+        - id: restaurant-menu
+          uri: lb://restaurant-menu
+          predicates:
+            - Path=/api/menu/**
+        - id: restaurant-menu-admin
+          uri: lb://restaurant-menu
+          predicates:
+            - Path=/api/admin/categories/**,/api/admin/dishes/**,/api/admin/specs/**,/api/admin/spec-items/**
+        - id: restaurant-order
+          uri: lb://restaurant-order
+          predicates:
+            - Path=/api/cart/**,/api/order/**
+        - id: restaurant-order-admin
+          uri: lb://restaurant-order
+          predicates:
+            - Path=/api/admin/orders/**,/api/admin/dashboard/**
+        - id: restaurant-payment
+          uri: lb://restaurant-payment
+          predicates:
+            - Path=/api/payment/**
+        - id: restaurant-payment-admin
+          uri: lb://restaurant-payment
+          predicates:
+            - Path=/api/admin/payments/**
+
+logging:
+  level:
+    com.restaurant: DEBUG

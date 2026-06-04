@@ -1,0 +1,86 @@
+<view class="page">
+  <!-- Tabs -->
+  <view class="tabs-wrap">
+    <scroll-view class="tabs" scroll-x enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{tabs}}"
+        wx:key="index"
+        class="tab-item {{activeTab === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="switchTab"
+      >
+        <text>{{item}}</text>
+        <view class="tab-indicator" wx:if="{{activeTab === index}}"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- Order List -->
+  <view class="order-list">
+    <block wx:for="{{orders}}" wx:key="id">
+      <view class="order-card" bindtap="goDetail" data-id="{{item.id}}">
+        <!-- Header -->
+        <view class="card-header">
+          <text class="order-no">{{item.orderNo}}</text>
+          <view class="status-badge status-{{item.status}}">
+            <text>{{statusText[item.status]}}</text>
+          </view>
+        </view>
+
+        <!-- Items -->
+        <view class="card-items">
+          <view class="order-item" wx:for="{{item.orderItems}}" wx:for-item="oi" wx:key="id">
+            <image class="oi-img" src="{{oi.dishImage || '/images/default-dish.png'}}" mode="aspectFill" />
+            <view class="oi-info">
+              <text class="oi-name">{{oi.dishName}}</text>
+              <text class="oi-specs" wx:if="{{oi.specs}}">{{oi.specs}}</text>
+            </view>
+            <view class="oi-meta">
+              <text class="oi-price">¥{{oi.unitPrice}}</text>
+              <text class="oi-qty">x{{oi.quantity}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- Footer -->
+        <view class="card-footer">
+          <text class="card-time">{{item.createTime}}</text>
+          <view class="card-summary">
+            <text class="item-count">共{{item.orderItems.length}}件</text>
+            <text class="amount-label">实付</text>
+            <text class="amount-value">¥{{item.payAmount}}</text>
+          </view>
+        </view>
+
+        <!-- Actions -->
+        <view class="card-actions">
+          <view wx:if="{{item.status === 0}}" class="action-btn primary" catchtap="payOrder" data-id="{{item.id}}">
+            <text>去支付</text>
+          </view>
+          <view wx:if="{{item.status === 0 || item.status === 1}}" class="action-btn outline" catchtap="cancelOrder" data-id="{{item.id}}">
+            <text>取消订单</text>
+          </view>
+          <view wx:if="{{item.status === 3}}" class="action-btn primary" catchtap="reOrder" data-id="{{item.id}}">
+            <text>再来一单</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- Empty -->
+    <view wx:if="{{orders.length === 0 && !loading}}" class="empty-state">
+      <view class="empty-icon-wrap">
+        <text class="empty-icon-text">📋</text>
+      </view>
+      <text class="empty-title">暂无订单</text>
+      <text class="empty-desc">美味佳肴等着你来品尝</text>
+      <view class="btn-outline" bindtap="goIndex">去逛逛</view>
+    </view>
+
+    <!-- Load more -->
+    <view wx:if="{{hasMore && orders.length > 0}}" class="load-more" bindtap="loadMore">
+      <text wx:if="{{loadingMore}}">加载中...</text>
+      <text wx:else>加载更多</text>
+    </view>
+  </view>
+</view>

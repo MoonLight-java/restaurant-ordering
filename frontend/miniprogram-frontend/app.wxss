@@ -1,0 +1,174 @@
+/* ============================================
+   Sunset Bistro — Modern Design System
+   ============================================ */
+
+/* Design Tokens */
+page {
+  --primary: #FF6B35;
+  --primary-light: #FF8C5A;
+  --primary-dark: #E55A2B;
+  --primary-glow: rgba(255, 107, 53, 0.25);
+
+  --accent-green: #00B894;
+  --accent-green-light: #55EFC4;
+  --accent-purple: #6C5CE7;
+  --accent-gold: #FDCB6E;
+  --accent-pink: #FD79A8;
+
+  --bg-page: #F0F2F5;
+  --bg-card: #FFFFFF;
+  --bg-dark: #1E272E;
+  --bg-dark-secondary: #2D3436;
+
+  --text-primary: #1E272E;
+  --text-secondary: #636E72;
+  --text-tertiary: #B2BEC3;
+  --text-inverse: #FFFFFF;
+
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16rpx 48rpx rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 8rpx 32rpx rgba(255, 107, 53, 0.25);
+
+  --radius-sm: 12rpx;
+  --radius-md: 20rpx;
+  --radius-lg: 28rpx;
+  --radius-xl: 40rpx;
+  --radius-full: 999rpx;
+
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', 'PingFang SC', sans-serif;
+
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.container {
+  padding: 20rpx;
+}
+
+/* Price display */
+.price {
+  color: var(--primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.price::before {
+  content: '\00a5';
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-right: 2rpx;
+}
+
+/* Gradient text (for special highlights) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section card */
+.section-card {
+  background: var(--bg-card);
+  margin: 16rpx 20rpx;
+  border-radius: var(--radius-md);
+  padding: 24rpx;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Section title */
+.section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+  letter-spacing: 0.5rpx;
+}
+
+/* Divider */
+.divider {
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, #E8EAED, transparent);
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 48rpx;
+}
+
+.empty-icon-wrap {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F5F6FA, #E8EAED);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32rpx;
+}
+
+.empty-icon-text {
+  font-size: 64rpx;
+}
+
+.empty-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: var(--text-tertiary);
+  margin-bottom: 40rpx;
+}
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-xl);
+  font-size: 30rpx;
+  font-weight: 600;
+  padding: 20rpx 56rpx;
+  letter-spacing: 1rpx;
+  box-shadow: var(--shadow-glow);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+/* Outline button */
+.btn-outline {
+  background: #fff;
+  color: var(--primary);
+  border: 2rpx solid var(--primary);
+  border-radius: var(--radius-xl);
+  font-size: 28rpx;
+  font-weight: 500;
+  padding: 16rpx 40rpx;
+  letter-spacing: 1rpx;
+}
+
+/* Bottom safe area */
+.safe-bottom {
+  padding-bottom: calc(constant(safe-area-inset-bottom) + 20rpx);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 20rpx);
+}

@@ -1,0 +1,244 @@
+/* ============================================
+   Cart Page — Sunset Bistro
+   ============================================ */
+
+.page {
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding-bottom: 140rpx;
+}
+
+/* Cart header */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 24rpx 28rpx 12rpx;
+}
+
+.cart-title {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.cart-count-text {
+  font-size: 24rpx;
+  color: var(--text-tertiary);
+}
+
+/* Cart items */
+.cart-list {
+  padding: 0 16rpx;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 12rpx;
+  border-radius: var(--radius-md);
+  padding: 20rpx 16rpx;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+/* Checkbox */
+.checkbox-wrap {
+  padding: 8rpx;
+}
+
+.check-circle {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  border: 3rpx solid #DFE6E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.check-circle.checked {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 4rpx 12rpx rgba(255, 107, 53, 0.3);
+}
+
+.check-mark {
+  font-size: 24rpx;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Item image */
+.item-image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: var(--radius-sm);
+  margin: 0 16rpx;
+  flex-shrink: 0;
+}
+
+/* Item info */
+.item-info {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.item-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item-specs {
+  font-size: 22rpx;
+  color: var(--text-tertiary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4rpx;
+}
+
+.item-price {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Quantity stepper */
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  background: #F5F6FA;
+  border-radius: var(--radius-full);
+  padding: 3rpx;
+}
+
+.stepper-btn {
+  width: 44rpx;
+  height: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  box-shadow: 0 1rpx 3rpx rgba(0,0,0,0.06);
+  transition: all 0.15s ease;
+}
+
+.stepper-btn:active {
+  transform: scale(0.9);
+}
+
+.stepper-btn.disabled {
+  opacity: 0.3;
+}
+
+.stepper-num {
+  width: 52rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Delete button */
+.delete-swipe {
+  flex-shrink: 0;
+  padding: 8rpx 0 8rpx 16rpx;
+}
+
+.delete-swipe text {
+  font-size: 22rpx;
+  color: #E17055;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #FDCB9E;
+  border-radius: var(--radius-sm);
+  background: #FFF5F0;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.06);
+  z-index: 100;
+  gap: 16rpx;
+}
+
+.select-all {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.select-all-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.summary {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8rpx;
+}
+
+.summary-label {
+  font-size: 24rpx;
+  color: var(--text-tertiary);
+}
+
+.summary-price {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.checkout-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  padding: 20rpx 44rpx;
+  border-radius: var(--radius-full);
+  font-size: 28rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+  box-shadow: 0 6rpx 24rpx rgba(255, 107, 53, 0.3);
+  transition: all 0.2s ease;
+}
+
+.checkout-btn:active {
+  transform: scale(0.96);
+}
+
+.checkout-btn.disabled {
+  background: #DFE6E9;
+  color: #B2BEC3;
+  box-shadow: none;
+}

@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="form-card">
+    <view class="form-item">
+      <text class="form-label">联系人</text>
+      <input class="form-input" placeholder="请输入联系人姓名" value="{{form.contactName}}" data-field="contactName" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">联系电话</text>
+      <input class="form-input" type="number" placeholder="请输入联系电话" value="{{form.contactPhone}}" data-field="contactPhone" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">所在地区</text>
+      <picker class="form-picker" mode="region" bindchange="onRegionChange">
+        <text class="{{form.province ? '' : 'placeholder'}}">{{form.province ? form.province + ' ' + form.city + ' ' + form.district : '请选择地区'}}</text>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">详细地址</text>
+      <textarea class="form-textarea" placeholder="街道、门牌号等" value="{{form.detailAddress}}" data-field="detailAddress" bindinput="onInput" maxlength="100" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">设为默认</text>
+      <switch checked="{{form.isDefault}}" bindchange="onSwitchChange" color="#FF6B35" />
+    </view>
+  </view>
+
+  <view class="btn-section">
+    <view class="save-btn" bindtap="saveAddress">
+      <text>保存地址</text>
+    </view>
+  </view>
+</view>

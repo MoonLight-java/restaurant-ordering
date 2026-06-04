@@ -1,0 +1,98 @@
+/* ============================================
+   Address Edit — Sunset Bistro
+   ============================================ */
+
+.page {
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+/* Form */
+.form-card {
+  background: #fff;
+  margin: 20rpx 24rpx;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+}
+
+.form-item:not(:last-child) {
+  border-bottom: 1rpx solid #F5F6FA;
+}
+
+.form-label {
+  width: 150rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.form-input::placeholder {
+  color: #DFE6E9;
+}
+
+.form-picker {
+  flex: 1;
+  text-align: right;
+}
+
+.form-picker text {
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.placeholder {
+  color: #DFE6E9 !important;
+}
+
+.form-textarea {
+  flex: 1;
+  height: 100rpx;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  text-align: right;
+  padding: 4rpx 0;
+}
+
+.form-textarea::placeholder {
+  color: #DFE6E9;
+}
+
+/* Button */
+.btn-section {
+  padding: 28rpx 24rpx;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 700;
+  border-radius: var(--radius-xl);
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2rpx;
+  box-shadow: 0 8rpx 28rpx rgba(255, 107, 53, 0.3);
+  transition: all 0.2s ease;
+}
+
+.save-btn:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}

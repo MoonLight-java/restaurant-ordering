@@ -1,0 +1,59 @@
+<view class="page">
+  <!-- Address -->
+  <view class="section-card address-card" bindtap="chooseAddress">
+    <view class="addr-icon-row">
+      <text class="addr-pin">📍</text>
+      <text class="addr-section-title">收货地址</text>
+    </view>
+    <view wx:if="{{address}}" class="address-info">
+      <view class="addr-contact">
+        <text class="addr-name">{{address.contactName}}</text>
+        <text class="addr-phone">{{address.contactPhone}}</text>
+      </view>
+      <text class="addr-full">{{address.province}}{{address.city}}{{address.district}} {{address.detailAddress}}</text>
+    </view>
+    <view wx:else class="no-address">
+      <text>请选择收货地址</text>
+      <text class="arrow-icon">›</text>
+    </view>
+  </view>
+
+  <!-- Order Items -->
+  <view class="section-card">
+    <view class="section-header-row">
+      <text class="section-icon">🍽️</text>
+      <text class="section-title">订单明细</text>
+    </view>
+    <view class="order-item" wx:for="{{items}}" wx:key="id">
+      <image class="oi-image" src="{{item.dishImage || '/images/default-dish.png'}}" mode="aspectFill" />
+      <view class="oi-info">
+        <text class="oi-name">{{item.dishName}}</text>
+        <text class="oi-spec">{{formatSpec(item.specJson)}}</text>
+      </view>
+      <view class="oi-right">
+        <text class="oi-price">¥{{item.unitPrice}}</text>
+        <text class="oi-qty">x{{item.quantity}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Remark -->
+  <view class="section-card">
+    <view class="section-header-row">
+      <text class="section-icon">✏️</text>
+      <text class="section-title">备注</text>
+    </view>
+    <textarea class="remark-input" placeholder="请输入备注信息（选填）" value="{{remark}}" bindinput="onRemarkInput" maxlength="100" />
+  </view>
+
+  <!-- Bottom Bar -->
+  <view class="bottom-bar">
+    <view class="total-row">
+      <text class="total-label">合计</text>
+      <text class="total-price">¥{{totalAmount}}</text>
+    </view>
+    <view class="submit-btn" bindtap="submitOrder">
+      <text>提交订单</text>
+    </view>
+  </view>
+</view>
